@@ -1,0 +1,53 @@
+<div class="row">
+  <div class="col-xs-12">
+    <h1>{{ tutor.firstName }} {{ tutor.lastName }}</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <h3>Email: {{ tutor.email }}</h3>
+    <div class="row">
+      <div class="col-xs-12">
+        <div
+          class="btn-group"
+          appDropdown>
+          <button
+            type="button"
+            class="btn btn-primary dropdown-toggle">
+            Manage Tutor <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a style="cursor: pointer;" (click)="onEditTutor()">Edit Tutor</a></li>
+            <li><a style="cursor: pointer;" (click)="onDeleteTutor()">Delete Tutor</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <ng-template [ngIf]="!authService.isAdmin()">
+      <hr>
+      <app-course-assign (courseUpdated)="onCourseUpdated($event)"></app-course-assign>
+    </ng-template>
+    <hr>
+    <div class="row">
+      <div class="col-xs-12">
+        <label *ngIf="authService.isAdmin()">Assigned Courses</label>
+        <div
+          class="row"
+          *ngFor="let course of courses; let i = index"
+          style="margin-top: 10px;">
+          <div class="col-xs-10">
+            {{course.name}} | {{course.term}} | {{course.location}}
+          </div>
+          <div class="col-xs-2">
+            <button
+              type="button"
+              class="btn btn-danger"
+              (click)="onDeleteAssignedCourse(i, course.key)"
+            >X
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

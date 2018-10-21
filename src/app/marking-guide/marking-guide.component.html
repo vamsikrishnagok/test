@@ -1,0 +1,68 @@
+<div class="row">
+  <div class="col-xs-12">
+    <div class="container">
+      <h2>Marking Guide</h2>
+      <h3>{{course.id}} - {{course.name}}</h3>
+      <h4>{{assessment.name}}
+        <button class="btn btn-primary pull-right" (click)="onBack()">Back</button>
+      </h4>
+      <ng-template [ngIf]="authService.isLecturer()" >
+        <hr>
+        <app-marking-guide-edit (markingGuideUpdated)="onMarkingGuideUpdate($event)"></app-marking-guide-edit>
+      </ng-template>
+
+      <!--Form to import marking guide-->
+      <ng-template [ngIf]="authService.isLecturer()">
+        <div class="row">
+          <div class="col-xs-12">
+            <label>Import Marking Guide</label>
+            <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+              <div class="col-xs-9">
+                <label>
+                  <select
+                    class="form-control"
+                    name="course"
+                    id="course"
+                    ngModel
+                    required>
+                    <option
+                      *ngFor="let assessment of assessments"
+                      value="{{assessment.key}}">
+                      {{assessment.name}}
+                    </option>
+                  </select>
+                </label>
+              </div>
+              <div class="col-xs-3">
+                <button class="btn btn-success" type="submit" [disabled]="!f.valid">Import</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </ng-template>
+
+
+      <hr>
+      <div class="row">
+        <div class="col-xs-12">
+          <table class="table table-striped">
+            <thead>
+            <tr>
+              <th class="col-xs-5">Requirement</th>
+              <th class="col-xs-5">Description</th>
+              <th class="col-xs-2">Marks</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let criterion of criteria; let i = index" (click)="onEditCriterion(i, criterion)">
+              <td>{{criterion.requirement}}</td>
+              <td>{{criterion.description}}</td>
+              <td>{{criterion.marks}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

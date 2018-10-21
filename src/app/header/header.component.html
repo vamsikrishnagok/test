@@ -1,0 +1,102 @@
+<div class="wrapper">
+<ng-template [ngIf]="authService.isAuthenticated()">
+  <header class="main-header">
+    <!-- Logo -->
+	
+    <a href="../../index2.html" class="logo">
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+      <span class="logo-mini"><b>AMT</b></span>
+      <!-- logo for regular state and mobile devices -->
+      <span class="logo-lg"><b>Assessment Marking Tool</b></span>
+    </a>
+	
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top">
+      <!-- Sidebar toggle button-->
+
+      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+
+      </a>
+
+
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+          <ng-template [ngIf]="!authService.isAuthenticated()">
+            <!--<li><a routerLink="/signup">Register</a></li>-->
+            <li><a routerLink="/signin">Login</a></li>
+          </ng-template>
+          <li *ngIf="authService.isAuthenticated()">
+            <a style="cursor: pointer;" (click)="onLogout() ">Log out</a>
+          </li>
+
+
+          <!--<li class="dropdown user user-menu">-->
+            <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown">-->
+              <!--<span class="hidden-xs">Alexander Pierce</span>-->
+            <!--</a>-->
+            <!--<ul class="dropdown-menu">-->
+
+              <!--<li class="user-footer">-->
+                <!--<div class="pull-left">-->
+                  <!--<a href="#" class="btn btn-default btn-flat">Profile</a>-->
+                <!--</div>-->
+                <!--<div class="pull-right">-->
+                  <!--<a href="#" class="btn btn-default btn-flat">Sign out</a>-->
+                <!--</div>-->
+              <!--</li>-->
+            <!--</ul>-->
+          <!--</li>-->
+
+        </ul>
+      </div>
+    </nav>
+  </header>
+  </ng-template>
+</div>
+<div>
+<ng-template [ngIf]="authService.isAuthenticated()">
+<aside class="main-sidebar">
+  <!-- sidebar: style can be found in sidebar.less -->
+  <section class="sidebar">
+    <!-- Sidebar user panel -->
+    <div class="user-panel">
+
+      <div class="pull-left info">
+        <p>{{first_name}}</p>
+        <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+      </div>
+    </div>
+
+    <!-- sidebar menu: : style can be found in sidebar.less -->
+    <ul class="sidebar-menu" data-widget="tree" *ngIf="authService.isAuthenticated()">
+      <li class="header">MAIN NAVIGATION</li>
+
+
+      <li  routerLinkActive="active"><a routerLink="/course"><i class="fa fa-book"></i> <span>Courses</span></a></li>
+      <ng-template [ngIf]="authService.isAdmin()">
+      <li  routerLinkActive="active"><a routerLink="/lecturer"><i class="fa fa-book"></i> <span>Lecturer</span></a></li>
+      </ng-template>
+      <ng-template [ngIf]="authService.isLecturer() || authService.isAdmin()">
+      <li  routerLinkActive="active"><a routerLink="/tutor"><i class="fa fa-book"></i> <span>Tutor</span></a></li>
+      </ng-template>
+      <li  routerLinkActive="active"><a routerLink="/student"><i class="fa fa-book"></i> <span>Students</span></a></li>
+      <ng-template [ngIf]="authService.isAdmin()">
+        <li  routerLinkActive="active"><a routerLink="/settings"><i class="fa fa-book"></i> <span>Settings</span></a></li>
+        <!--<li routerLinkActive="active"><a routerLink="">My Settings</a></li>-->
+      </ng-template>
+
+    </ul>
+
+
+
+  </section>
+  <!-- /.sidebar -->
+</aside>
+</ng-template>
+</div>
+<br>
+

@@ -1,0 +1,49 @@
+<div class="row">
+  <div class="col-xs-12">
+    <h1>{{ course.id }} - {{ course.name }}</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <h4 *ngFor="let location of locations">Location: {{ location.location }}</h4>
+    <h4 *ngFor="let term of terms">Term: {{ term.term }}</h4>
+    <div *ngIf="this.course.lecturer" >
+      <h4 *ngFor="let lecturer of lecturers">Lecturer: {{lecturer.firstName}} {{lecturer.lastName}}</h4>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <ng-template [ngIf]="authService.isAdmin()">
+          <div
+            class="btn-group"
+            appDropdown>
+            <button
+              type="button"
+              class="btn btn-primary dropdown-toggle">
+              Manage Course <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+              <li class="upload-btn-wrapper">
+                <a style="cursor: pointer;" class="btn">Import students</a>
+                <input type="file" class="upload" (change)="changeListener($event.target.files)"/>
+              </li>
+              <li><a style="cursor: pointer;" (click)="onEditCourse()">Edit Course</a></li>
+              <li><a style="cursor: pointer;" (click)="onDeleteCourse()">Delete Course</a></li>
+            </ul>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+    <hr>
+    <app-assessment-edit (assessmentUpdated)="onAssessmentUpdated($event)"></app-assessment-edit>
+    <hr>
+    <ul class="list-group">
+      <a
+        class="list-group-item"
+        style="cursor: pointer"
+        *ngFor="let assessment of assessments; let i = index"
+        (click)="onEditAssessment(i, assessment)">
+        Assessment {{i + 1}} - {{ assessment.name }}
+      </a>
+    </ul>
+  </div>
+</div>

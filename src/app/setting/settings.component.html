@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-3">
+      <div class="sidebar-nav-fixed affix">
+        <div class="well">
+          <ul class="nav ">
+            <li class="nav-header">Settings</li>
+            <li class="active">
+              <a style="cursor: pointer;"
+                 routerLink="/settings/course-locations">Course Locations</a>
+            </li>
+            <li>
+              <a style="cursor: pointer;"
+                 routerLink="/settings/course-terms">Course Terms</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-9">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

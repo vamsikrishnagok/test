@@ -1,0 +1,12 @@
+<a
+  style="cursor: pointer;"
+  [routerLink]="[index]"
+  routerLinkActive="active"
+  (click)="onEdit(tutor)"
+  class="list-group-item clearfix">
+  <div class="pull-left">
+    <h4 class="list-group-item-heading">{{ tutor.firstName }} {{ tutor.lastName }}</h4>
+    <h5 class="list-group-item-text">{{ tutor.email }}</h5>
+  </div>
+</a>
+

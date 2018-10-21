@@ -1,0 +1,123 @@
+<div class="row">
+  <div class="col-xs-12">
+    <form [formGroup]="courseForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-xs-12">
+          <button
+            type="submit"
+            class="btn btn-success"
+            [disabled]="!courseForm.valid"
+            [routerLink]="index"
+          >Save
+          </button>
+          <button type="button" class="btn btn-danger" (click)="onCancel()">Cancel</button>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="courseId">Course ID</label>
+            <input
+              type="text"
+              class="form-control"
+              id="courseId"
+              formControlName="id">
+            <span class="help-block">Format: ITECH 1000</span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="courseName">Course Name</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="name"
+              id="courseName">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="term">Term</label>
+            <select
+              id="term"
+              class="form-control"
+              formControlName="term"
+              name="term">
+              <option *ngFor="let term of terms" [ngValue]="term.key">{{term.term}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="editMode; else newCourses">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="form-group">
+              <label for="location">Location</label>
+              <select
+                id="location"
+                class="form-control"
+                formControlName="location"
+                name="location">
+                <option *ngFor="let location of locations" [ngValue]="location.key">{{location.location}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="form-group">
+              <label for="lecturer">Lecturer</label>
+              <select
+                id="lecturer"
+                class="form-control"
+                formControlName="lecturer"
+                name="lecturer">
+                <option *ngFor="let lecturer of lecturers" [ngValue]="lecturer.key">
+                  {{lecturer.firstName}} {{lecturer.lastName}}
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <ng-template #newCourses>
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="form-group">
+              <label>Location</label>
+              <div
+                class=""
+                *ngFor="let location of locations">
+                <input
+                  class=""
+                  type="checkbox"
+                  name="{{location.location}}"
+                  id="{{location.location}}"
+                  required
+                  formControlName="location"
+                  [value]="location.key"
+                  (change)="onChange(location.key,$event.target.checked)">
+                <label class="form-check-label" for="{{location.location}}">
+                  {{location.location}}
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+
+
+      <span
+        *ngIf="!courseForm.valid && courseForm.touched"
+        class="help-block">Please enter a valid data!</span>
+    </form>
+  </div>
+</div>

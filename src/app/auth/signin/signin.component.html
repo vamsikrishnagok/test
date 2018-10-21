@@ -1,0 +1,43 @@
+
+      <form class="form-signin" (ngSubmit)="onSignin(f)" #f="ngForm">
+        <h2 class="form-signin-heading">Please login</h2>
+        <div class="form-group">
+          <label for="email">Mail</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            ngModel
+            required
+            email
+            class="form-control"
+            #email="ngModel">
+          <!--<span class="help-block" *ngIf="!email.valid && email.touched">Please enter a valid email!</span>-->
+
+          <div *ngIf="!email.valid && email.touched;else emilContent">Please enter a valid email!</div>
+          <ng-template #emilContent>Please use correct email format.</ng-template>
+
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            ngModel
+            required
+            pattern=".{6,}"
+            class="form-control"
+            #password="ngModel">
+          <!--<span class="help-block" *ngIf="!password.valid && password.touched">Password must be at least 6 characters!</span>-->
+
+          <div *ngIf="!password.valid && password.touched;else passwordContent">Password must be at least 6 characters!</div>
+          <ng-template #passwordContent>Password enter at least 6 characters.</ng-template>
+
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+      </form>
+
+
+
+

@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-xs-12">
+    <button class="btn btn-success" (click)="onAddTutor()">New Tutor</button>
+  </div>
+</div>
+<hr>
+<div>
+  <div class="col-xs-12">
+    <app-tutor-detail
+      *ngFor="let tutorEl of tutors; let i = index"
+      [tutor]="tutorEl"
+      [index]="i"></app-tutor-detail>
+  </div>
+</div>

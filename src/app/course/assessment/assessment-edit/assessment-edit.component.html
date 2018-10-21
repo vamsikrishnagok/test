@@ -1,0 +1,52 @@
+<div class="row">
+  <div class="col-xs-12">
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+      <div class="row">
+        <div class="col-sm-5 form-group">
+          <label for="name">Assessment Name</label>
+          <input
+            type="text"
+            id="name"
+            class="form-control"
+            name="name"
+            ngModel
+            required
+          >
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <ng-template [ngIf]="!authService.isTutor()">
+            <button
+              class="btn btn-success"
+              type="submit"
+              [disabled]="!f.valid">{{ editMode ? 'Update' : 'Add' }}
+            </button>
+            <button
+              class="btn btn-danger"
+              type="button"
+              (click)="onDelete()"
+              *ngIf="editMode"
+            >Delete
+            </button>
+          </ng-template>
+          <button
+            class="btn btn-primary"
+            type="button"
+            *ngIf="editMode"
+            (click)="onStudentList()"
+          >Student List
+          </button>
+          <button
+            class="btn btn-primary"
+            type="button"
+            *ngIf="editMode"
+            (click)="onMarkingGuide()"
+          >Marking Guide
+          </button>
+          <button class="btn btn-info" type="button" (click)="onClear()">Clear</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

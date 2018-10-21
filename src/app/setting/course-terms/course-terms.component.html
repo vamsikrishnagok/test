@@ -1,0 +1,48 @@
+<div class="row">
+  <div class="col-xs-12">
+    <h3>Course Term</h3>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <app-course-terms-edit (termUpdated)="onTermUpdated($event)"></app-course-terms-edit>
+    <hr>
+
+    <label>Active Terms</label>
+    <ul class="list-group">
+      <div *ngFor="let term of terms; let i = index">
+        <a
+          class="list-group-item"
+          style="cursor: pointer"
+          *ngIf="term.isActive"
+          (click)="onEditTerm(i, term)">
+          Term - {{ term.term }}
+        </a>
+      </div>
+    </ul>
+
+    <label>Disabled Terms</label>
+    <ul class="list-group">
+      <div *ngFor="let term of terms; let i = index">
+        <a
+          class="list-group-item"
+          style="cursor: pointer"
+          *ngIf="!term.isActive"
+          (click)="onEditTerm(i, term)">
+          Term - {{ term.term }}
+        </a>
+      </div>
+    </ul>
+
+
+    <!--<ul class="list-group">-->
+      <!--<a-->
+        <!--class="list-group-item"-->
+        <!--style="cursor: pointer"-->
+        <!--*ngFor="let term of terms let i = index"-->
+        <!--(click)="onEditTerm(i, term)">-->
+        <!--Term {{i + 1}} - {{ term.term }}-->
+      <!--</a>-->
+    <!--</ul>-->
+  </div>
+</div>

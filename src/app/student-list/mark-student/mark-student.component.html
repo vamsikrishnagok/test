@@ -1,0 +1,58 @@
+<div class="row">
+  <div class="col-xs-12">
+    <h4>Student Name: {{student.firstName}} {{student.lastName}}</h4>
+    <h4>Student Id: {{student.key}}</h4>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+      <div class="row">
+        <div class="col-xs-12">
+          <button
+            class="btn btn-success"
+            type="submit"
+            [disabled]="!f.valid"
+          >Save
+          </button>
+        </div>
+      </div>
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th class="col-xs-3">Requirement</th>
+          <th class="col-xs-4">Description</th>
+          <th class="col-xs-1">Marks</th>
+          <th class="col-xs-1">Given Marks</th>
+          <th class="col-xs-3">Given Comment</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor=" let criterion of criteria"
+            class="form-group"
+            ngModel
+            data-value="criteriaKey">
+          <td>{{criterion.requirement}}</td>
+          <td>{{criterion.description}}</td>
+          <td>{{criterion.marks}}</td>
+          <td><input
+            type="number"
+            name="givenMarks"
+            ngModel
+            required
+            pattern="^[1-9]+[0-9]*$"
+            min="0"
+            max="{{criterion.marks}}"
+            class="form-control"></td>
+          <td><input
+            type="text"
+            name="givenComment"
+            ngModel
+            class="form-control"></td>
+        </tr>
+        </tbody>
+      </table>
+    </form>
+  </div>
+</div>
+

@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-xs-12">
+    <button class="btn btn-success" (click)="onAddLecturer()">New Lecturer</button>
+  </div>
+</div>
+<hr>
+<div>
+  <div class="col-xs-12">
+    <app-lecturer-detail
+      *ngFor="let lecturerEl of lecturers; let i = index"
+      [lecturer]="lecturerEl"
+      [index]="i"></app-lecturer-detail>
+  </div>
+</div>

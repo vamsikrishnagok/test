@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="col-xs-12">
+    <label>Assign Courses</label>
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+      <div class="col-xs-9">
+        <label>
+          <select
+            class="form-control"
+            name="course"
+            id="course"
+            ngModel
+            required>
+            <option
+              *ngFor="let course of courses"
+              [ngValue]="course.key">{{course.name}} | {{course.term}} | {{course.location}}</option>
+          </select>
+        </label>
+      </div>
+      <div class="col-xs-3">
+        <button class="btn btn-success" type="submit" [disabled]="!f.valid">Add</button>
+      </div>
+    </form>
+  </div>
+</div>

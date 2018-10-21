@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-xs-12">
+    <h3>Course Location</h3>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <app-course-locations-edit (locationUpdated)="onLocationUpdated($event)"></app-course-locations-edit>
+    <hr>
+    <label>Active Locations</label>
+    <ul class="list-group">
+      <div *ngFor="let location of locations; let i = index">
+        <a
+          class="list-group-item"
+          style="cursor: pointer"
+          *ngIf="location.isActive"
+          (click)="onEditLocation(i, location)">
+          Location - {{ location.location }}
+        </a>
+      </div>
+    </ul>
+
+    <label>Disabled Locations</label>
+    <ul class="list-group">
+      <div *ngFor="let location of locations; let i = index">
+        <a
+          class="list-group-item"
+          style="cursor: pointer"
+          *ngIf="!location.isActive"
+          (click)="onEditLocation(i, location)">
+          Location - {{ location.location }}
+        </a>
+      </div>
+    </ul>
+
+
+  </div>
+</div>

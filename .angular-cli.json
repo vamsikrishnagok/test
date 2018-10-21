@@ -1,0 +1,78 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "project": {
+    "name": "assessment-marking-tool"
+  },
+  "apps": [
+    {
+      "root": "src",
+      "outDir": "dist",
+      "assets": [
+        "assets",
+        "favicon.ico"
+      ],
+      "index": "index.html",
+      "main": "main.ts",
+      "polyfills": "polyfills.ts",
+      "test": "test.ts",
+      "tsconfig": "tsconfig.app.json",
+      "testTsconfig": "tsconfig.spec.json",
+      "prefix": "app",
+      "styles": [
+        "assets/bower_components/bootstrap/dist/css/bootstrap.min.css",
+        "assets/bower_components/font-awesome/css/font-awesome.min.css",
+        "assets/bower_components/Ionicons/css/ionicons.min.css",
+        "assets/bower_components/jvectormap/jquery-jvectormap.css",
+        "assets/dist/css/AdminLTE.min.css",
+        "assets/dist/css/skins/_all-skins.min.css",
+        "styles.css"
+      ],
+      "scripts": [
+        "assets/bower_components/jquery/dist/jquery.min.js",
+        "assets/bower_components/bootstrap/dist/js/bootstrap.min.js",
+        "assets/bower_components/fastclick/lib/fastclick.js",
+        "assets/dist/js/adminlte.min.js",
+        "assets/bower_components/jquery-sparkline/dist/jquery.sparkline.min.js",
+        "assets/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js",
+        "assets/plugins/jvectormap/jquery-jvectormap-world-mill-en.js",
+        "assets/bower_components/jquery-slimscroll/jquery.slimscroll.min.js",
+        "assets/bower_components/chart.js/Chart.js",
+        "assets/dist/js/pages/dashboard2.js",
+        "assets/dist/js/demo.js"
+      ],
+      "environmentSource": "environments/environment.ts",
+      "environments": {
+        "dev": "environments/environment.ts",
+        "prod": "environments/environment.prod.ts"
+      }
+    }
+  ],
+  "e2e": {
+    "protractor": {
+      "config": "./protractor.conf.js"
+    }
+  },
+  "lint": [
+    {
+      "project": "src/tsconfig.app.json",
+      "exclude": "**/node_modules/**"
+    },
+    {
+      "project": "src/tsconfig.spec.json",
+      "exclude": "**/node_modules/**"
+    },
+    {
+      "project": "e2e/tsconfig.e2e.json",
+      "exclude": "**/node_modules/**"
+    }
+  ],
+  "test": {
+    "karma": {
+      "config": "./karma.conf.js"
+    }
+  },
+  "defaults": {
+    "styleExt": "css",
+    "component": {}
+  }
+}

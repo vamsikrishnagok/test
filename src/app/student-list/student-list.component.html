@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-xs-12">
+    <div class="container">
+      <!--<h2 >Student(s) from Assessment</h2>-->
+      <h2>Students from Assessment</h2>
+      <h3>{{courseId}} - {{courseName}}
+      <button class="btn btn-primary pull-right" (click)="onBack()">Back</button></h3>
+      <h3>{{assessmentName}}
+        <!--<button-->
+          <!--class="btn btn-success pull-right"-->
+          <!--(click)="onCreateMarkingGuide()"-->
+          <!--*ngIf="!createMarkingGuide">-->
+          <!--Marking Guide-->
+        <!--</button>-->
+      </h3>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

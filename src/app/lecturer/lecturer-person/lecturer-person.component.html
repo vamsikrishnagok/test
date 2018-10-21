@@ -1,0 +1,48 @@
+<div class="row">
+  <div class="col-xs-12">
+    <h1>{{ lecturer.firstName }} {{ lecturer.lastName }}</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <h3>Email: {{ lecturer.email }}</h3>
+    <div class="row">
+      <div class="col-xs-12">
+        <div
+          class="btn-group"
+          appDropdown>
+          <button
+            type="button"
+            class="btn btn-primary dropdown-toggle">
+            Manage Lecturer <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a style="cursor: pointer;" (click)="onEditLecturer()">Edit Lecturer</a></li>
+            <li><a style="cursor: pointer;" (click)="onDeleteLecturer()">Delete Lecturer</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-xs-12" >
+        <label>Assigned Courses</label>
+        <div
+          class="row"
+          *ngFor="let course of courses; let i = index"
+          style="margin-top: 10px;">
+          <div class="col-xs-10">
+            {{course.name}} | {{course.term}} | {{course.location}}
+          </div>
+          <div class="col-xs-2">
+            <button
+              type="button"
+              class="btn btn-danger"
+              (click)="onDeleteAssignedCourseForLecturer(i, course.key)"
+            >X</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
