@@ -1,11 +1,11 @@
 <div class="row">
   <div class="col-xs-12">
-    <button class="btn btn-success" (click)="onAddLecturer()">New Lecturer</button>
+    <button class="btn btn-success btn-block" (click)="onAddLecturer()">New Lecturer</button>
   </div>
 </div>
 <hr>
 <div>
-  <div class="col-xs-12">
+  <div class="col-xs-12" [@lightSpeedIn]="lightSpeedIn">
     <app-lecturer-detail
       *ngFor="let lecturerEl of lecturers; let i = index"
       [lecturer]="lecturerEl"

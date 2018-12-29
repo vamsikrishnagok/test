@@ -5,17 +5,23 @@ import {AssessmentDetail} from "../../../shared/assessment-detail.model";
 import {Subscription} from "rxjs/Subscription";
 import {ActivatedRoute, Router} from "@angular/router";
 import {AuthService} from "../../../auth/auth.service";
+import {bounce, fadeInLeft, lightSpeedIn} from 'ng-animate';
+import {transition, trigger, useAnimation} from '@angular/animations';
 
 @Component({
   selector: 'app-assessment-edit',
   templateUrl: './assessment-edit.component.html',
-  styleUrls: ['./assessment-edit.component.css']
+  styleUrls: ['./assessment-edit.component.css'],
+  animations: [
+    trigger('bounce', [transition('* => *', useAnimation(bounce))])
+  ],
 })
 export class AssessmentEditComponent implements OnInit, OnDestroy {
   @ViewChild('f') assessmentForm: NgForm;
   editMode = false;
   editedAssessmentIndex: number;
   subscription: Subscription;
+  bounce: any;
   @Output() assessmentUpdated = new EventEmitter<string>();
 
   constructor(private courseService: CourseService,

@@ -1,12 +1,12 @@
   <div class="row">
     <div class="col-xs-12">
-      <button class="btn btn-success" (click)="onNewCourse()">New Course</button>
+      <button class="btn btn-success btn-block" (click)="onNewCourse()">New Course</button>
     </div>
   </div>
   <hr>
 <div>
-  <div class="col-xs-12">
-    <app-course-detail
+  <div class="col-xs-12" [@lightSpeedIn]="lightSpeedIn">
+    <app-course-detail  [@fadeInLeft]="fadeInLeft"
       *ngFor="let courseEl of courses; let i= index"
       [course]="courseEl"
       [index]="i"></app-course-detail>

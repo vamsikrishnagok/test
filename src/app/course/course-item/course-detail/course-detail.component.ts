@@ -3,17 +3,22 @@ import {Course} from '../../course.model';
 import {CourseService} from "../../course.service";
 import {CourseLocation} from "../../../setting/course-location.model";
 import {CourseTerm} from "../../../setting/course-term.model";
-
+import {bounce, fadeInLeft, lightSpeedIn} from 'ng-animate';
+import {transition, trigger, useAnimation} from '@angular/animations';
 @Component({
   selector: 'app-course-detail',
   templateUrl: './course-detail.component.html',
-  styleUrls: ['./course-detail.component.css']
+  styleUrls: ['./course-detail.component.css'],
+  animations: [
+    trigger('fadeInLeft', [transition('* => *', useAnimation(fadeInLeft))])
+  ],
 })
 export class CourseDetailComponent implements OnInit {
   @Input() course: Course;
   @Input() index: number;
   locations: CourseLocation [] = [];
   terms: CourseTerm [] = [];
+  fadeInLeft: any;
 
   constructor(private courseService: CourseService) {
   }

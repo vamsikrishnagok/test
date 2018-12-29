@@ -3,15 +3,22 @@ import {Course} from '../course.model';
 import {CourseService} from '../course.service';
 import {ActivatedRoute, Router} from "@angular/router";
 import {AuthService} from "../../auth/auth.service";
+import { trigger, transition, animate, style, query, stagger, useAnimation } from '@angular/animations';
+import { bounce,lightSpeedIn,fadeInLeft } from 'ng-animate';
 
 @Component({
   selector: 'app-course-item',
   templateUrl: './course-item.component.html',
-  styleUrls: ['./course-item.component.css']
+  styleUrls: ['./course-item.component.css'],
+  animations: [
+    trigger('lightSpeedIn', [transition('* => *', useAnimation(lightSpeedIn))]),
+    trigger('fadeInLeft', [transition('* => *', useAnimation(fadeInLeft))])
+  ],
 })
 export class CourseItemComponent implements OnInit {
   courses: Course[];
-
+  lightSpeedIn: any;
+  fadeInLeft: any;
   // userRole: string;
 
   constructor(private courseService: CourseService,

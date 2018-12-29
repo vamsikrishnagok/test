@@ -6,7 +6,7 @@
 <hr>
 <div>
   <div class="col-xs-12">
-    <app-tutor-detail
+    <app-tutor-detail [@lightSpeedIn]="lightSpeedIn"
       *ngFor="let tutorEl of tutors; let i = index"
       [tutor]="tutorEl"
       [index]="i"></app-tutor-detail>

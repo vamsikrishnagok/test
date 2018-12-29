@@ -2,14 +2,23 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {LecturerService} from "../lecturer.service";
 import {User} from "../../shared/user.model";
+import { trigger, transition, animate, style, query, stagger, useAnimation } from '@angular/animations';
+import { bounce,lightSpeedIn,fadeInLeft } from 'ng-animate';
 
 @Component({
   selector: 'app-lecturer-list',
   templateUrl: './lecturer-list.component.html',
-  styleUrls: ['./lecturer-list.component.css']
+  styleUrls: ['./lecturer-list.component.css'],
+  animations: [
+    trigger('lightSpeedIn', [transition('* => *', useAnimation(lightSpeedIn))]),
+    trigger('fadeInLeft', [transition('* => *', useAnimation(fadeInLeft))])
+  ],
+
 })
 export class LecturerListComponent implements OnInit {
   lecturers: any;
+  lightSpeedIn: any;
+  fadeInLeft: any;
 
   constructor(private route: ActivatedRoute,
               private router: Router,

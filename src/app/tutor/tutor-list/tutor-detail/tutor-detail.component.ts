@@ -1,6 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {TutorService} from "../../tutor.service";
 import {User} from "../../../shared/user.model";
+import { trigger, transition, animate, style, query, stagger, useAnimation } from '@angular/animations';
+import { bounce,lightSpeedIn,fadeInLeft } from 'ng-animate';
 
 @Component({
   selector: 'app-tutor-detail',
